@@ -1,5 +1,5 @@
 const fs = require('fs');
-const pngValidator = require('../dist/index');
+const pngValidator = require('../dist/index.cjs');
 const tape = require('tape');
 
 const pngSuiteDir = __dirname + '/png-suite/';
@@ -39,20 +39,24 @@ function testFile(dir, file, expectError) {
 		const data = fs.readFileSync(path);
 		try {
 			pngValidator.pngValidator(data);
-			t.pass('file is valid as expected');
+			if (expectError) {
+				t.fail('File is valid, but it is not expected to be');
+			} else {
+				t.pass('File is valid as expected');
+			}
 		} catch (error) {
-			if (!expectError) {
+			if (expectError) {
+				t.pass(
+					'File is invalid as expected. Error: \n\n' +
+					error.message
+				);
+			} else {
 				t.fail(
 					'Unexpected error validating file:' + file + '\n\n' +
 					error.message +	'\n' +
 					error.stack,
 				);
 				process.exit(1);
-			} else {
-				t.pass(
-					'file is invalid as expected \n' +
-					error.message
-				);
 			}
 		}
 	});

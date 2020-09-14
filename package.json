@@ -5,7 +5,7 @@
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.es.js",
 	"browser": "dist/index.iife.js",
-	"types": "index.d.ts",
+	"types": "dist/index.d.ts",
 	"author": "Sámal Rasmussen",
 	"license": "MIT",
 	"scripts": {

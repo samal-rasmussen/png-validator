@@ -26,6 +26,7 @@ const constants = {
 };
 
 let _hasIHDR = false;
+let _hasIDAT = false;
 let _hasIEND = false;
 let _palette: number[][] = [];
 let _colorType = 0;
@@ -49,6 +50,7 @@ export function pngValidator(
 	buffer: Uint8Array,
 ): void {
 	_hasIHDR = false;
+	_hasIDAT = false;
 	_hasIEND = false;
 	_palette = [];
 	_colorType = 0;
@@ -108,6 +110,14 @@ export function pngValidator(
 		}
 
 		_i += 4;
+	}
+
+	if (!_hasIHDR) {
+		throw new Error('Parsing ended without finding the IHDR chunk. Index: ' + _i);
+	}
+
+	if (!_hasIDAT) {
+		throw new Error('Parsing ended without finding any IDAT chunk. Index: ' + _i);
 	}
 
 	if (!_hasIEND) {
@@ -221,6 +231,7 @@ function _parseIDAT(data: Uint8Array): void {
 	}
 
 	_handleInflateData(data);
+	_hasIDAT = true;
 }
 
 function _parseIEND(data: Uint8Array): void {
