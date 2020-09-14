@@ -1,0 +1,27 @@
+{
+	"name": "png-validator",
+	"version": "1.0.0",
+	"description": "Png validator checks Png files for corruption",
+	"main": "dist/index.cjs.js",
+	"module": "dist/index.es.js",
+	"browser": "dist/index.iife.js",
+	"types": "index.d.ts",
+	"author": "Sámal Rasmussen",
+	"license": "MIT",
+	"scripts": {
+		"build": "rollup -c && tsc",
+		"lint": "eslint . --ext .ts",
+		"test": "yarn run build && tape test/test.js"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "4.1.0",
+		"@typescript-eslint/parser": "4.1.0",
+		"eslint": "7.9.0",
+		"rollup": "2.26.11",
+		"rollup-plugin-delete": "2.0.0",
+		"rollup-plugin-terser": "7.0.2",
+		"rollup-plugin-typescript2": "0.27.2",
+		"tape": "5.0.1",
+		"typescript": "4.0.2"
+	}
+}
