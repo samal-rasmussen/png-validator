@@ -5,13 +5,31 @@
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.es.js",
 	"browser": "dist/index.iife.js",
-	"types": "dist/index.d.ts",
+	"types": "index.d.ts",
 	"author": "Sámal Rasmussen",
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/samal-rasmussen/png-validator.git"
+	},
+	"homepage": "https://github.com/samal-rasmussen/png-validator",
+	"keywords": [
+		"png",
+		"png-validator",
+		"validator",
+		"validate",
+		"valid",
+		"corruption",
+		"corrupt",
+		"correct",
+		"checker"
+	],
 	"scripts": {
 		"build": "rollup -c && tsc",
 		"lint": "eslint . --ext .ts",
-		"test": "yarn run build && tape test/test.js"
+		"test": "yarn run build && tape test/test.js",
+		"publish-for-real": "npm publish --registry https://registry.npmjs.org/",
+		"publish-dry-run": "npm publish --registry https://registry.npmjs.org/ --dry-run"
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "4.1.0",

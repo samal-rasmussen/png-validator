@@ -1,24 +1,17 @@
-/* eslint-disable sort-keys */
-var constants = {
-    TYPE_IHDR: 0x49484452,
-    TYPE_IEND: 0x49454e44,
-    TYPE_IDAT: 0x49444154,
-    TYPE_PLTE: 0x504c5445,
-    TYPE_tRNS: 0x74524e53,
-    TYPE_gAMA: 0x67414d41,
-    // color-type bits
-    COLORTYPE_PALETTE: 1,
-    COLORTYPE_COLOR: 2,
-    COLORTYPE_ALPHA: 4,
-    // color-type combinations
-    COLORTYPE_PALETTE_COLOR: 3,
-    COLORTYPE_TO_BPP_MAP: {
-        0: 1,
-        2: 3,
-        3: 1,
-        4: 2,
-        6: 4,
-    },
+var TYPE_IHDR = 0x49484452;
+var TYPE_IEND = 0x49454e44;
+var TYPE_IDAT = 0x49444154;
+var TYPE_PLTE = 0x504c5445;
+var TYPE_tRNS = 0x74524e53;
+var TYPE_gAMA = 0x67414d41;
+// color-type combinations
+var COLORTYPE_PALETTE_COLOR = 3;
+var COLORTYPE_TO_BPP_MAP = {
+    0: 1,
+    2: 3,
+    3: 1,
+    4: 2,
+    6: 4,
 };
 var _hasIHDR = false;
 var _hasIDAT = false;
@@ -32,12 +25,12 @@ function _handleInflateData(inflatedData) {
     inflateDataList.push(inflatedData);
 }
 var _chunkHandlers = {};
-_chunkHandlers[constants.TYPE_IHDR] = _parseIHDR;
-_chunkHandlers[constants.TYPE_IEND] = _parseIEND;
-_chunkHandlers[constants.TYPE_IDAT] = _parseIDAT;
-_chunkHandlers[constants.TYPE_PLTE] = _parsePLTE;
-_chunkHandlers[constants.TYPE_tRNS] = _parseTRNS;
-_chunkHandlers[constants.TYPE_gAMA] = _parseGAMA;
+_chunkHandlers[TYPE_IHDR] = _parseIHDR;
+_chunkHandlers[TYPE_IEND] = _parseIEND;
+_chunkHandlers[TYPE_IDAT] = _parseIDAT;
+_chunkHandlers[TYPE_PLTE] = _parsePLTE;
+_chunkHandlers[TYPE_tRNS] = _parseTRNS;
+_chunkHandlers[TYPE_gAMA] = _parseGAMA;
 export function pngValidator(buffer) {
     _hasIHDR = false;
     _hasIDAT = false;
@@ -66,7 +59,7 @@ export function pngValidator(buffer) {
         var ancillary = Boolean(typeAndDataBuffer[0] & 0x20); // or critical
         //    priv = Boolean(typeAndDataBuffer[1] & 0x20), // or public
         //    safeToCopy = Boolean(typeAndDataBuffer[2] & 0x20); // or unsafe
-        if (!_hasIHDR && type !== constants.TYPE_IHDR) {
+        if (!_hasIHDR && type !== TYPE_IHDR) {
             throw new Error('Expected IHDR on beggining. Index: ' + _i);
         }
         var data = _readBuffer(length_1);
@@ -135,7 +128,7 @@ function _parseIHDR(data) {
         depth !== 16) {
         throw new Error('Unsupported bit depth ' + depth + '. Index: ' + _i);
     }
-    if (!(colorType in constants.COLORTYPE_TO_BPP_MAP)) {
+    if (!(colorType in COLORTYPE_TO_BPP_MAP)) {
         throw new Error('Unsupported color type. Index: ' + _i);
     }
     if (compr !== 0) {
@@ -158,7 +151,7 @@ function _parsePLTE(data) {
 }
 function _parseTRNS(data) {
     // palette
-    if (_colorType === constants.COLORTYPE_PALETTE_COLOR) {
+    if (_colorType === COLORTYPE_PALETTE_COLOR) {
         if (_palette.length === 0) {
             throw new Error('Transparency chunk must be after palette. Index: ' + _i);
             return;
@@ -175,7 +168,7 @@ function _parseGAMA(data) {
     //
 }
 function _parseIDAT(data) {
-    if (_colorType === constants.COLORTYPE_PALETTE_COLOR &&
+    if (_colorType === COLORTYPE_PALETTE_COLOR &&
         _palette.length === 0) {
         throw new Error('Expected palette not found. Index: ' + _i);
     }
