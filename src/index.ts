@@ -69,8 +69,6 @@ export function pngValidator(
 			name += String.fromCharCode(_buffer[_i - i]);
 		}
 
-		//console.log('chunk ', name, length);
-
 		// chunk flags
 		const ancillary = Boolean(typeAndDataBuffer[0] & 0x20); // or critical
 		//    priv = Boolean(typeAndDataBuffer[1] & 0x20), // or public
@@ -150,11 +148,6 @@ function _parseIHDR(data: Uint8Array) {
 	const compr = data[10];
 	const filter = data[11];
 	const interlace = data[12];
-
-	// console.log('    width', width, 'height', height,
-	//     'depth', depth, 'colorType', colorType,
-	//     'compr', compr, 'filter', filter, 'interlace', interlace
-	// );
 
 	if (
 		depth !== 8 &&
