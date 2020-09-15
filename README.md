@@ -10,9 +10,16 @@ It checks that the chunk layout is correct, and it checks that the crc code for 
 Usage
 ---
 
-This library exposes a single function `pngValidator` that takes a single parameter, which is a Uint8Array with the raw Png file data. It will throw an error if the files is _not_ valid.
+Png Validator is built both as a cjs and es bundle, so you can use it in the backend and frontend.
+
+There is only a single function exposed called `pngValidator` that takes a single parameter, which is a Uint8Array with the raw Png file data. It will throw an error if the file is _not_ valid.
 
 ```
+// node
+const pngValidator = require('png-validator');
+// browser / bundler
+import { pngValidator } from 'png-validator';
+
 try {
 	pngValidator(buffer);
 	// success
@@ -20,5 +27,3 @@ try {
 	// file is corrupt
 }
 ```
-
-Png Validator is build both as a cjs and es bundle, so you can use it in the backend and frontend.

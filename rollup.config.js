@@ -15,7 +15,7 @@ export default {
 			format: 'es',
 		},
 		{
-			file: pkg.browser,
+			file: 'dist/index.iife.js',
 			format: 'iife',
 			name: 'PngValidator',
 		},

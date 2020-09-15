@@ -4,8 +4,7 @@
 	"description": "Png validator checks Png files for corruption",
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.es.js",
-	"browser": "dist/index.iife.js",
-	"types": "index.d.ts",
+	"types": "dist/index.d.ts",
 	"author": "Sámal Rasmussen",
 	"license": "MIT",
 	"repository": {
@@ -24,12 +23,13 @@
 		"correct",
 		"checker"
 	],
+	"sideEffects": false,
 	"scripts": {
 		"build": "rollup -c && tsc",
 		"lint": "eslint . --ext .ts",
 		"test": "yarn run build && tape test/test.js",
-		"publish-for-real": "npm publish --registry https://registry.npmjs.org/",
-		"publish-dry-run": "npm publish --registry https://registry.npmjs.org/ --dry-run"
+		"publish-for-real": "npm publish --registry https://registry.npmjs.org/ --access public",
+		"publish-dry-run": "npm publish --registry https://registry.npmjs.org/ --access public --dry-run"
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "4.1.0",
