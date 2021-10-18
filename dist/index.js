@@ -159,7 +159,7 @@ function _parseTRNS(data) {
         }
     }
 }
-function _parseGAMA(data) {
+function _parseGAMA() {
     //
 }
 function _parseIDAT(data) {
@@ -170,7 +170,7 @@ function _parseIDAT(data) {
     _handleInflateData(data);
     _hasIDAT = true;
 }
-function _parseIEND(data) {
+function _parseIEND() {
     _hasIEND = true;
 }
 function _getInt32(buffer, offset) {

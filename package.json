@@ -1,6 +1,6 @@
 {
 	"name": "png-validator",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Png validator checks Png files for corruption",
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.es.js",
@@ -15,9 +15,11 @@
 	"keywords": [
 		"png",
 		"png-validator",
+		"png-validate",
 		"validator",
 		"validate",
 		"valid",
+		"invalid",
 		"corruption",
 		"corrupt",
 		"correct",
@@ -27,19 +29,19 @@
 	"scripts": {
 		"build": "rollup -c && tsc",
 		"lint": "eslint . --ext .ts",
-		"test": "yarn run build && tape test/test.js",
+		"test": "npm run build && tape test/test.js",
 		"publish-for-real": "npm publish --registry https://registry.npmjs.org/ --access public",
 		"publish-dry-run": "npm publish --registry https://registry.npmjs.org/ --access public --dry-run"
 	},
 	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "4.1.0",
-		"@typescript-eslint/parser": "4.1.0",
-		"eslint": "7.9.0",
-		"rollup": "2.26.11",
+		"@typescript-eslint/eslint-plugin": "5.0.0",
+		"@typescript-eslint/parser": "5.0.0",
+		"eslint": "8.0.1",
+		"rollup": "2.58.0",
 		"rollup-plugin-delete": "2.0.0",
 		"rollup-plugin-terser": "7.0.2",
-		"rollup-plugin-typescript2": "0.27.2",
-		"tape": "5.0.1",
-		"typescript": "4.0.2"
+		"rollup-plugin-typescript2": "0.30.0",
+		"tape": "5.3.1",
+		"typescript": "4.4.4"
 	}
 }

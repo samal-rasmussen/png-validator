@@ -1,4 +1,3 @@
-
 const TYPE_IHDR = 0x49484452;
 const TYPE_IEND = 0x49454e44;
 const TYPE_IDAT = 0x49444154;
@@ -202,7 +201,7 @@ function _parseTRNS(data: Uint8Array): void {
 	}
 }
 
-function _parseGAMA(data: Uint8Array): void {
+function _parseGAMA(): void {
 	//
 }
 
@@ -219,7 +218,7 @@ function _parseIDAT(data: Uint8Array): void {
 	_hasIDAT = true;
 }
 
-function _parseIEND(data: Uint8Array): void {
+function _parseIEND(): void {
 	_hasIEND = true;
 }
 

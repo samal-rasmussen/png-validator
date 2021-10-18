@@ -4,3 +4,6 @@ node_modules/
 publish.js
 yarn.lock
 /test/
+src/
+tsconfig.json
+rollup.config.js

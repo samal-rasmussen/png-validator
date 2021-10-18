@@ -28,6 +28,7 @@ try {
 	pngValidator(buffer);
 	// success
 } catch (e) {
-	// file is corrupt
+	// file is invalid or corrupt
+	console.error(e);
 }
 ```

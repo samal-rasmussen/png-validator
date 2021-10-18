@@ -28,7 +28,6 @@ module.exports = {
 		'@typescript-eslint/no-explicit-any': ['off'],
 		'@typescript-eslint/restrict-plus-operands': ['off'],
 		'comma-dangle': ['error', 'always-multiline'],
-		// 'function-paren-newline': ['error', 'multiline-arguments'],
 		'indent':  ['error', 'tab', { 'SwitchCase': 1, 'MemberExpression': 'off' }],
 		'no-irregular-whitespace': ['error', {'skipComments': true}],
 		'no-multiple-empty-lines': ['error', { "max": 1 }],

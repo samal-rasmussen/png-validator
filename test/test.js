@@ -2,35 +2,22 @@ const fs = require('fs');
 const pngValidator = require('../dist/index.cjs');
 const tape = require('tape');
 
-const pngSuiteDir = __dirname + '/png-suite/';
-const filesDir = __dirname + '/files/';
+testDir(__dirname + '/png-suite/');
+testDir( __dirname + '/files/');
 
-fs.promises.readdir(pngSuiteDir)
-.then((files) => {	
+function testDir(dir) {
+	let files = fs.readdirSync(dir)
 	files = files.filter((file) => {
 		return /\.png$/i.exec(file);
 	});
-	
 	files.forEach((file) => {
 		let expectError = false;
 		if (/^x/.exec(file)) {
 			expectError = true;
 		}
-		testFile(pngSuiteDir, file, expectError);
+		testFile(dir, file, expectError);
 	});
-})
-.then(() => {
-	return fs.promises.readdir(filesDir)
-})
-.then((files) => {	
-	files.forEach((file) => {
-		let expectError = false;
-		if (/^x/.exec(file)) {
-			expectError = true;
-		}
-		testFile(filesDir, file, expectError);
-	});
-});
+}
 
 function testFile(dir, file, expectError) {
 	tape('testing file ' + file, (t) => {
