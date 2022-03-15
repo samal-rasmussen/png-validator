@@ -7,7 +7,7 @@ This code is cut out of the much more comprehensive https://github.com/lukeapage
 
 It checks that the chunk layout is correct, and it checks that the crc code for each chunk is valid.
 
-Only 2.5 kb minified and uncompressed.
+Zero dependencies, 261 lines of source code, and only 2.5 kb after minification.
 
 Available as an npm package: https://www.npmjs.com/package/png-validator
 
