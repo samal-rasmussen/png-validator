@@ -1,9 +1,4 @@
 node_modules/
-.eslintignore
-.eslintrc.js
-publish.js
-yarn.lock
+package-lock.lock
 /test/
-src/
 tsconfig.json
-rollup.config.js

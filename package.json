@@ -1,47 +1,52 @@
 {
-	"name": "png-validator",
-	"version": "1.1.0",
-	"description": "Png validator checks Png files for corruption",
-	"main": "dist/index.cjs.js",
-	"module": "dist/index.es.js",
-	"types": "dist/index.d.ts",
-	"author": "Sámal Rasmussen",
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/samal-rasmussen/png-validator.git"
-	},
-	"homepage": "https://github.com/samal-rasmussen/png-validator",
-	"keywords": [
-		"png",
-		"png-validator",
-		"png-validate",
-		"validator",
-		"validate",
-		"valid",
-		"invalid",
-		"corruption",
-		"corrupt",
-		"correct",
-		"checker"
-	],
-	"sideEffects": false,
-	"scripts": {
-		"build": "rollup -c && tsc",
-		"lint": "eslint . --ext .ts",
-		"test": "npm run build && tape test/test.js",
-		"publish-for-real": "npm publish --registry https://registry.npmjs.org/ --access public",
-		"publish-dry-run": "npm publish --registry https://registry.npmjs.org/ --access public --dry-run"
-	},
-	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "5.0.0",
-		"@typescript-eslint/parser": "5.0.0",
-		"eslint": "8.0.1",
-		"rollup": "2.58.0",
-		"rollup-plugin-delete": "2.0.0",
-		"rollup-plugin-terser": "7.0.2",
-		"rollup-plugin-typescript2": "0.30.0",
-		"tape": "5.3.1",
-		"typescript": "4.4.4"
-	}
+  "name": "png-validator",
+  "version": "2.0.0",
+  "description": "Png validator checks Png files for corruption",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "index.d.ts.map"
+  ],
+  "author": "Sámal Rasmussen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samal-rasmussen/png-validator.git"
+  },
+  "homepage": "https://github.com/samal-rasmussen/png-validator",
+  "keywords": [
+    "png",
+    "png-validator",
+    "png-validate",
+    "png-validation",
+    "validator",
+    "validate",
+    "validation",
+    "valid",
+    "invalid",
+    "corruption",
+    "corrupt",
+    "correct",
+    "correction",
+    "checker"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "dts-buddy",
+    "check": "tsc -w",
+    "test": "node --test",
+    "publish": "npm publish --registry https://registry.npmjs.org/ --access public"
+  },
+  "devDependencies": {
+    "@types/node": "20.9.0",
+    "dts-buddy": "0.4.0",
+    "typescript": "5.2.2"
+  }
 }

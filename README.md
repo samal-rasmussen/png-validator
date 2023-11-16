@@ -1,5 +1,4 @@
-Png Validator
----
+## Png Validator
 
 Checks Png files for corruption.
 
@@ -7,21 +6,15 @@ This code is cut out of the much more comprehensive https://github.com/lukeapage
 
 It checks that the chunk layout is correct, and it checks that the crc code for each chunk is valid.
 
-Zero dependencies, 261 lines of source code, and only 2.5 kb after minification.
+Zero dependencies and only 2.6 kb after minification.
 
 Available as an npm package: https://www.npmjs.com/package/png-validator
 
-Usage
----
+## Usage
 
-Png Validator is built both as a cjs and es bundle, so you can use it in the backend and frontend.
-
-There is only a single function exposed called `pngValidator` that takes a single parameter, which is a Uint8Array with the raw Png file data. It will throw an error if the file is _not_ valid.
+There is only a single function exposed called `pngValidator` that takes a single parameter, which is an Uint8Array with the raw Png file data. It will throw an error if the file is _not_ valid.
 
 ```
-// node
-const pngValidator = require('png-validator');
-// browser / bundler
 import { pngValidator } from 'png-validator';
 
 try {
@@ -32,3 +25,5 @@ try {
 	console.error(e);
 }
 ```
+
+From version 2.0 on there is only an esm version of Png Validator. Use v. 1.1 if you need commonjs.

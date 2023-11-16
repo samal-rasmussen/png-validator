@@ -1,6 +1,0 @@
-node_modules
-dist
-test/test.js
-.eslintrc.js
-publish.js
-rollup.config.js
